@@ -20,7 +20,7 @@ The analysis uses nine ETFs representing multiple asset classes:
 - VNQ: Real estate
 - DBC: Broad commodities
 
-The main analysis uses daily adjusted prices from January 2010 through December 2025. Prices from 2008–2009 are used only for the first two-year estimation window of the rolling backtest.
+The main analysis uses daily adjusted prices from January 2010 through December 2025. Prices from 2008–2009 provide historical observations for the early rolling estimation windows; performance evaluation begins in January 2010.
 
 ## Methodology
 
@@ -60,8 +60,8 @@ The notebook includes:
 
 **In sample**
 
-- Unconstrained maximum-Sharpe optimization concentrates in QQQ (44%), GLD (28%), and TLT (25%), with an estimated Sharpe ratio of 1.14.
-- The 5%–35% bounds reduce the estimated Sharpe ratio to 1.00 while spreading the allocation across all nine ETFs.
+- Unconstrained maximum-Sharpe optimization concentrates in QQQ (43%), GLD (28%), and TLT (25%), with an estimated Sharpe ratio of 1.14.
+- The 5%–35% bounds reduce the estimated Sharpe ratio to 1.01 while spreading the allocation across all nine ETFs.
 
 **Rolling out-of-sample backtest, gross of costs** (January 2010 – December 2025, same dates for all strategies)
 
@@ -75,7 +75,7 @@ The notebook includes:
 ![Out-of-sample cumulative performance](images/out_of_sample_performance.png)
 
 - Before costs, the constrained strategy had the highest Sharpe ratio, the lowest volatility, and the shallowest drawdown of the four. It also traded about 37% less than the unconstrained strategy.
-- Both optimized strategies had lower Sharpe ratios out of sample than in sample. The drop was larger without bounds (1.14 → 0.82) than with them (1.00 → 0.91).
+- Both optimized strategies had lower Sharpe ratios out of sample than in sample. The drop was larger without bounds (1.14 → 0.82) than with them (1.01 → 0.91).
 - SPY produced by far the highest CAGR, with substantially higher volatility and the deepest drawdown.
 
 **After transaction costs** (per dollar traded; values shown as gross / 10 bps / 25 bps)
@@ -102,9 +102,13 @@ All results are historical point estimates from a single 16-year path, with a ze
 
 Tested with Python 3.13.
 
-```bash
+```text
 python -m venv .venv
-.venv\Scripts\activate          # Windows; use `source .venv/bin/activate` on macOS/Linux
+
+# Activate the environment
+.venv\Scripts\activate          # Windows (PowerShell or Command Prompt)
+source .venv/bin/activate       # macOS/Linux
+
 pip install -r requirements.txt
 jupyter nbconvert --to notebook --execute --inplace portfolio_analysis.ipynb
 ```
