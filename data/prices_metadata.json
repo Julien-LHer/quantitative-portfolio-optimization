@@ -1,0 +1,23 @@
+{
+  "source": "Yahoo Finance",
+  "retrieval_method": "Yahoo Finance v8 chart API, 'adjclose' series (direct request; yfinance 1.2.0 was rate-limited when this cache was built). This is the series yfinance returns as 'Close' with auto_adjust=True.",
+  "tickers": [
+    "SPY",
+    "QQQ",
+    "EFA",
+    "EEM",
+    "TLT",
+    "LQD",
+    "GLD",
+    "VNQ",
+    "DBC"
+  ],
+  "start": "2008-01-01",
+  "end_exclusive": "2026-01-01",
+  "interval": "1d",
+  "price_field": "Adjusted close (split- and distribution-adjusted)",
+  "first_date": "2008-01-02",
+  "last_date": "2025-12-31",
+  "rows": 4529,
+  "downloaded_at_utc": "2026-10-03T00:30:31+00:00"
+}
